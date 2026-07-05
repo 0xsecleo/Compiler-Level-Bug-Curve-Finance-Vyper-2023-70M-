@@ -35,3 +35,12 @@ What happened: The attacker used flash loans to violently swing a Curve pool's b
 Root cause: Vault share price was derived directly from a spot balance ratio that could be moved within a single transaction.
 Fix: Never price vault shares off an instantaneous on-chain ratio. Use TWAP, or better, price based on a value that can't be moved atomically within the attacker's own transaction.
 Base takeaway: This is the same root lesson as bZx, just applied to vault accounting instead of collateral. Any "price per share" calculation in a Base vault, staking contract, or yield aggregator needs the same TWAP scrutiny as a lending oracle.
+Cross-Protocol Collateral Exploit — Alpha Homora / Iron Bank (2021, $37.5M)
+fix(integration): validate collateral value independently per
+protocol, remove implicit trust in composed leverage positions
+
+Ref: Alpha Homora v2 / Cream's Iron Bank exploit (Feb 2021, $37.5M)
+Root cause: attacker chained multiple protocols (Alpha Homora,
+Iron Bank, Curve, SushiSwap) together in a single transaction to
+create a leveraged position whose true collateral value was never
+independently validated at each hop of the composition.
