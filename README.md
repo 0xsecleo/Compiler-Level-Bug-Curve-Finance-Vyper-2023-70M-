@@ -20,3 +20,4 @@ Root cause: a subtle rounding/math error in how liquidity was
 tracked when swaps crossed multiple price ticks let the attacker
 construct a sequence of swaps that made the pool believe it held far
 more liquidity than it actually did, enabling massive over-withdrawal.
+Fix: Extensive fuzz testing and formal verification specifically targeting edge cases in tick-crossing / liquidity math, not just "normal" swap scenarios. Add post-swap invariant checks (e.g., total liquidity can never exceed sum of deposits).
