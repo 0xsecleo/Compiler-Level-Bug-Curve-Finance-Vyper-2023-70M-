@@ -8,3 +8,4 @@ Root cause: a bug in specific Vyper compiler versions caused
 reentrancy locks to malfunction on certain pools, even though the
 Solidity-equivalent logic looked correct — the vulnerability lived
 in the compiler, not the contract source.
+Root cause: The vulnerability existed in the compiler toolchain itself. Contract source code was correct; the compiled bytecode was not.
