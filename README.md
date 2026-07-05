@@ -58,3 +58,5 @@ manipulable with a modest amount of capital, and used TWICE within
 two months.
 What happened: Twice in two months, attackers manipulated the price of INV (Inverse's own governance token) on a thin liquidity pool, then used the inflated price to borrow far more than the real collateral was worth.
 Root cause: Pricing a native/governance token from its own thin liquidity pool — a textbook self-referential oracle risk — and not fixing it thoroughly after the first incident.
+Fix: Native governance tokens should never be their own primary collateral price source. Use external, deep-liquidity oracles (Chainlink) with sanity bounds, and audit ALL similar tokens after any single oracle incident — not just the one that got hit.
+Base takeaway: The second Inverse hack is the real lesson: getting hacked once and only patching the exact exploited path — without auditing every structurally similar risk — invites a repeat. If one of your price feeds gets manipulated, assume every similarly-designed feed is vulnerable too.
