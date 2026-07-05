@@ -21,3 +21,4 @@ tracked when swaps crossed multiple price ticks let the attacker
 construct a sequence of swaps that made the pool believe it held far
 more liquidity than it actually did, enabling massive over-withdrawal.
 Fix: Extensive fuzz testing and formal verification specifically targeting edge cases in tick-crossing / liquidity math, not just "normal" swap scenarios. Add post-swap invariant checks (e.g., total liquidity can never exceed sum of deposits).
+Base takeaway: Complex AMM math (concentrated liquidity especially) is one of the hardest things to audit by reading code alone. If you're deploying a CL-style AMM on Base, budget for fuzzing/formal verification specifically on the math library — not just a manual line-by-line review.
