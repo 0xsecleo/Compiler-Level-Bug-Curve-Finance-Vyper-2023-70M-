@@ -11,3 +11,12 @@ in the compiler, not the contract source.
 Root cause: The vulnerability existed in the compiler toolchain itself. Contract source code was correct; the compiled bytecode was not.
 Fix: Track compiler CVEs and advisories continuously, not just at deployment time. Pin and audit your exact compiler version. Re-verify guards with independent bytecode-level analysis, not just source review.
 Base takeaway: "My code is correct" isn't the whole story — your toolchain has to be correct too. Subscribe to Solidity AND Vyper security advisories if you use either, and treat compiler upgrades/pins as a security-relevant decision, not a devops afterthought.
+Concentrated Liquidity Math Exploit — KyberSwap (2023, $54M)
+fix(amm): correct tick-crossing liquidity delta calculation, add
+invariant check post-swap to detect impossible liquidity states
+
+Ref: KyberSwap Elastic exploit (Nov 2023, $54M)
+Root cause: a subtle rounding/math error in how liquidity was
+tracked when swaps crossed multiple price ticks let the attacker
+construct a sequence of swaps that made the pool believe it held far
+more liquidity than it actually did, enabling massive over-withdrawal.
