@@ -45,3 +45,5 @@ Iron Bank, Curve, SushiSwap) together in a single transaction to
 create a leveraged position whose true collateral value was never
 independently validated at each hop of the composition.
 Fix: Any protocol integrating with external money-legos should independently validate the economic reality of composed positions, not just trust upstream protocol outputs at face value.
+Base takeaway: Base's whole appeal is fast, cheap composability — which means this exact class of cross-protocol exploit is more likely here, not less. If you integrate with another Base protocol's LP tokens, vault shares, or leveraged positions, validate independently. Don't just trust the interface.
+X Post:
