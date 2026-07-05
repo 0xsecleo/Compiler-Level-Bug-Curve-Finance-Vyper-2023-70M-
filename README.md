@@ -56,3 +56,5 @@ Root cause: the protocol's own governance token (INV) was priced
 using a thin, low-liquidity on-chain pool as the oracle source —
 manipulable with a modest amount of capital, and used TWICE within
 two months.
+What happened: Twice in two months, attackers manipulated the price of INV (Inverse's own governance token) on a thin liquidity pool, then used the inflated price to borrow far more than the real collateral was worth.
+Root cause: Pricing a native/governance token from its own thin liquidity pool — a textbook self-referential oracle risk — and not fixing it thoroughly after the first incident.
