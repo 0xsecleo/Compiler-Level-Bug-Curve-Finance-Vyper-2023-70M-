@@ -60,3 +60,14 @@ What happened: Twice in two months, attackers manipulated the price of INV (Inve
 Root cause: Pricing a native/governance token from its own thin liquidity pool — a textbook self-referential oracle risk — and not fixing it thoroughly after the first incident.
 Fix: Native governance tokens should never be their own primary collateral price source. Use external, deep-liquidity oracles (Chainlink) with sanity bounds, and audit ALL similar tokens after any single oracle incident — not just the one that got hit.
 Base takeaway: The second Inverse hack is the real lesson: getting hacked once and only patching the exact exploited path — without auditing every structurally similar risk — invites a repeat. If one of your price feeds gets manipulated, assume every similarly-designed feed is vulnerable too.
+Private Key Compromise (Multisig) — Multichain (2023, $126M+)
+fix(custody): migrate from centralized MPC/founder-controlled keys
+to decentralized threshold signing with published, verifiable
+key-share distribution
+
+Ref: Multichain (formerly Anyswap) collapse (Jul 2023, $126M+
+across multiple chains)
+Root cause: the protocol's cross-chain infrastructure depended on
+MPC keys effectively controlled by the founder/core team; after the
+founder's reported arrest in China, funds began moving out of
+bridge contracts with no public explanation, and the team went dark.
