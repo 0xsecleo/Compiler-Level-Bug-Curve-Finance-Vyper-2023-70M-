@@ -34,3 +34,4 @@ and withdrew at manipulated exchange rates for profit.
 What happened: The attacker used flash loans to violently swing a Curve pool's balance ratio, deposited into Harvest's vault while the share price was artificially cheap, swung the pool back, then withdrew at a fair price — pocketing the difference. Repeated in a tight loop for ~$24M.
 Root cause: Vault share price was derived directly from a spot balance ratio that could be moved within a single transaction.
 Fix: Never price vault shares off an instantaneous on-chain ratio. Use TWAP, or better, price based on a value that can't be moved atomically within the attacker's own transaction.
+Base takeaway: This is the same root lesson as bZx, just applied to vault accounting instead of collateral. Any "price per share" calculation in a Base vault, staking contract, or yield aggregator needs the same TWAP scrutiny as a lending oracle.
