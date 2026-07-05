@@ -9,3 +9,4 @@ reentrancy locks to malfunction on certain pools, even though the
 Solidity-equivalent logic looked correct — the vulnerability lived
 in the compiler, not the contract source.
 Root cause: The vulnerability existed in the compiler toolchain itself. Contract source code was correct; the compiled bytecode was not.
+Fix: Track compiler CVEs and advisories continuously, not just at deployment time. Pin and audit your exact compiler version. Re-verify guards with independent bytecode-level analysis, not just source review.
