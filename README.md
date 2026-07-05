@@ -31,3 +31,5 @@ Root cause: vault share price was calculated directly from a
 Curve pool's instantaneous balance ratio, which the attacker
 swung sharply using large flash-loan-funded swaps, then deposited
 and withdrew at manipulated exchange rates for profit.
+What happened: The attacker used flash loans to violently swing a Curve pool's balance ratio, deposited into Harvest's vault while the share price was artificially cheap, swung the pool back, then withdrew at a fair price — pocketing the difference. Repeated in a tight loop for ~$24M.
+Root cause: Vault share price was derived directly from a spot balance ratio that could be moved within a single transaction.
