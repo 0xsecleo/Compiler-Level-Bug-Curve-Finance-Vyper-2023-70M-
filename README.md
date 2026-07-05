@@ -71,3 +71,4 @@ Root cause: the protocol's cross-chain infrastructure depended on
 MPC keys effectively controlled by the founder/core team; after the
 founder's reported arrest in China, funds began moving out of
 bridge contracts with no public explanation, and the team went dark.
+Fix: There is no smart contract fix for this — the fix is architectural and organizational: genuinely distributed key custody, transparent multisig signer identities where possible, and protocol-level circuit breakers that don't depend on any single team's continued good faith.
