@@ -84,3 +84,5 @@ approve withdrawals — attackers compromised just 2 private keys
 authorize fraudulent transfers.
 What happened: With only 2 of 5 signatures needed to approve a withdrawal, attackers only needed to compromise two private keys — a far lower bar than most bridge security models assume — to drain the bridge entirely.
 Root cause: An undersized multisig threshold relative to the value secured, combined with (reportedly) inadequate key storage practices for those two critical keys.
+Fix: Bridge security should scale multisig thresholds to the value secured — 2-of-5 is far too low for a nine-figure bridge. Combine with hardware security modules for key storage and withdrawal rate limits/caps as a backstop even if keys are compromised.
+Base takeaway: If you're building or choosing a bridge for Base, "it has a multisig" is not a security guarantee by itself. Ask: what's the threshold, relative to total value secured? What's the key storage practice? Is there a withdrawal cap that limits damage even in a worst-case compromise?
