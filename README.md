@@ -82,3 +82,5 @@ Root cause: the bridge only required 2 of 5 multisig signatures to
 approve withdrawals — attackers compromised just 2 private keys
 (believed to be stored with insufficient protection) to fully
 authorize fraudulent transfers.
+What happened: With only 2 of 5 signatures needed to approve a withdrawal, attackers only needed to compromise two private keys — a far lower bar than most bridge security models assume — to drain the bridge entirely.
+Root cause: An undersized multisig threshold relative to the value secured, combined with (reportedly) inadequate key storage practices for those two critical keys.
