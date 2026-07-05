@@ -47,3 +47,12 @@ independently validated at each hop of the composition.
 Fix: Any protocol integrating with external money-legos should independently validate the economic reality of composed positions, not just trust upstream protocol outputs at face value.
 Base takeaway: Base's whole appeal is fast, cheap composability — which means this exact class of cross-protocol exploit is more likely here, not less. If you integrate with another Base protocol's LP tokens, vault shares, or leveraged positions, validate independently. Don't just trust the interface.
 X Post:
+Recurring Oracle Manipulation — Inverse Finance (2022, $15.6M across two incidents)
+fix(oracle): replace low-liquidity Curve pool price feed with
+Chainlink + sanity-bound fallback for INV token pricing
+
+Ref: Inverse Finance exploits (Apr 2022 $15.6M, Jun 2022 $1.2M)
+Root cause: the protocol's own governance token (INV) was priced
+using a thin, low-liquidity on-chain pool as the oracle source —
+manipulable with a modest amount of capital, and used TWICE within
+two months.
