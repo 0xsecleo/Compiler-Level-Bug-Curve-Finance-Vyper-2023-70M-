@@ -73,3 +73,12 @@ founder's reported arrest in China, funds began moving out of
 bridge contracts with no public explanation, and the team went dark.
 Fix: There is no smart contract fix for this — the fix is architectural and organizational: genuinely distributed key custody, transparent multisig signer identities where possible, and protocol-level circuit breakers that don't depend on any single team's continued good faith.
 Base takeaway: Before integrating ANY bridge or cross-chain infra into your Base app, ask: who actually holds the keys? "Decentralized" on the website means nothing if 3 people in one company can move all the funds. Do real custody due diligence, not marketing due diligence.
+Cross-Chain Validation Bypass — Harmony Horizon Bridge (2022, $100M)
+fix(bridge): raise multisig threshold from 2-of-5 to 6-of-9,
+require hardware-key signing, add withdrawal rate-limiting
+
+Ref: Harmony Horizon Bridge exploit (Jun 2022, $100M)
+Root cause: the bridge only required 2 of 5 multisig signatures to
+approve withdrawals — attackers compromised just 2 private keys
+(believed to be stored with insufficient protection) to fully
+authorize fraudulent transfers.
