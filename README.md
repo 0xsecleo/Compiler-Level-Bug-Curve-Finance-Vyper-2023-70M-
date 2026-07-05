@@ -22,3 +22,12 @@ construct a sequence of swaps that made the pool believe it held far
 more liquidity than it actually did, enabling massive over-withdrawal.
 Fix: Extensive fuzz testing and formal verification specifically targeting edge cases in tick-crossing / liquidity math, not just "normal" swap scenarios. Add post-swap invariant checks (e.g., total liquidity can never exceed sum of deposits).
 Base takeaway: Complex AMM math (concentrated liquidity especially) is one of the hardest things to audit by reading code alone. If you're deploying a CL-style AMM on Base, budget for fuzzing/formal verification specifically on the math library — not just a manual line-by-line review.
+Price Manipulation via Recursive Lending — Harvest Finance (2020, $24M)
+fix(vault): replace instantaneous pool price with TWAP for
+share-price calculation in deposit/withdraw math
+
+Ref: Harvest Finance exploit (Oct 2020, $24M)
+Root cause: vault share price was calculated directly from a
+Curve pool's instantaneous balance ratio, which the attacker
+swung sharply using large flash-loan-funded swaps, then deposited
+and withdrew at manipulated exchange rates for profit.
