@@ -44,3 +44,4 @@ Root cause: attacker chained multiple protocols (Alpha Homora,
 Iron Bank, Curve, SushiSwap) together in a single transaction to
 create a leveraged position whose true collateral value was never
 independently validated at each hop of the composition.
+Fix: Any protocol integrating with external money-legos should independently validate the economic reality of composed positions, not just trust upstream protocol outputs at face value.
